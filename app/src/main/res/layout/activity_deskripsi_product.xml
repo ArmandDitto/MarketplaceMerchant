@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".DeskripsiProductActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Home"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:text=">"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tv_deskripsi_mini_kategori_produk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Shoes and Groceries"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:text=">"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tv_deskripsi_mini_nama_produk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Synergistic Plastic Clock"/>
+    </LinearLayout> <!-- Breadcrumb -->
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_deskripsi_produk"
+                android:layout_width="175dp"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_launcher"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="20dp">
+
+            <TextView
+                android:id="@+id/tv_deskripsi_nama_merchant"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thora Kautzer"
+                android:textSize="14sp"
+                android:textColor="#000000"/>
+
+            <TextView
+                android:id="@+id/tv_deskripsi_nama_produk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Synergistic Plastic Clock"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#000000"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Stok"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:text=":"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tv_deskripsi_jumlah_produk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="999"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout> <!-- Deskripsi Produk -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="PRODUK"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textAlignment="center" /> <!-- Teks Produk-->
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:text="ID Produk"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=":"
+                    android:paddingRight="10dp"/>
+
+                <TextView
+                    android:id="@+id/tv_deskripsi_id_produk_bottom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1"/>
+            </LinearLayout> <!-- ID Produk -->
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Produk"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=":"
+                    android:paddingRight="10dp"/>
+
+                <TextView
+                    android:id="@+id/tv_deskripsi_nama_produk_bottom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Synergistic Plastic Clock"/>
+            </LinearLayout> <!-- Nama Produk -->
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:text="Slug Produk"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=":"
+                    android:paddingRight="10dp"/>
+
+                <TextView
+                    android:id="@+id/tv_deskripsi_slug_produk_bottom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="synergistic-plastic-clock"/>
+            </LinearLayout> <!-- Slug Produk -->
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:text="Jumlah Produk"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=":"
+                    android:paddingRight="10dp"/>
+
+                <TextView
+                    android:id="@+id/tv_deskripsi_jumlah_produk_bottom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="8"/>
+            </LinearLayout> <!-- Jumlah Produk -->
+
+
+        </LinearLayout> <!-- Deskripsi Produk -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="MERCHANT"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textAlignment="center"/> <!-- Teks Merchant-->
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:text="ID Merchant"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=":"
+                    android:paddingRight="10dp"/>
+
+                <TextView
+                    android:id="@+id/tv_deskripsi_id_merchant_bottom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1"/>
+            </LinearLayout> <!-- ID Merchant -->
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Merchant"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=":"
+                    android:paddingRight="10dp"/>
+
+                <TextView
+                    android:id="@+id/tv_deskripsi_nama_merchant_bottom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Thora Kautzer"/>
+            </LinearLayout> <!-- Nama Merchant -->
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:text="Slug Merchant"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=":"
+                    android:paddingRight="10dp"/>
+
+                <TextView
+                    android:id="@+id/tv_deskripsi_slug_merchant_bottom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="thora-kautzer"/>
+            </LinearLayout> <!-- Slug Merchant -->
+
+        </LinearLayout> <!-- Deskripsi Merchant -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="KATEGORI PRODUK"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textAlignment="center"/> <!-- Teks Kategori Produk-->
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:text="ID Produk"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=":"
+                    android:paddingRight="10dp"/>
+
+                <TextView
+                    android:id="@+id/tv_deskripsi_id_kategori_produk_bottom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1"/>
+            </LinearLayout> <!-- ID Kategori Produk -->
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Kategori"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=":"
+                    android:paddingRight="10dp"/>
+
+                <TextView
+                    android:id="@+id/tv_deskripsi_nama_kategori_prduk_bottom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Clothing"/>
+            </LinearLayout> <!-- Nama Kategori Produk -->
+
+        </LinearLayout> <!-- Deskripsi Kategori Produk -->
+
+    </LinearLayout> <!-- Deskripsi Bottom -->
+
+</androidx.appcompat.widget.LinearLayoutCompat>

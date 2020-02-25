@@ -1,6 +1,7 @@
 package com.ditto.training.marketplaceformerchant.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.ditto.training.marketplaceformerchant.DeskripsiProductActivity;
 import com.ditto.training.marketplaceformerchant.R;
 import com.ditto.training.marketplaceformerchant.model.Product;
 
@@ -45,13 +47,22 @@ public class ListProductAdapter extends RecyclerView.Adapter<ListProductAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.tvNamaProduk.setText(productList.get(position).getProductName());
         holder.tvNamaMerchant.setText(productList.get(position).getMerchant().getMerchantName());
 
-        String baseUrl = "http://210.210.154.66/4444";
+        String baseUrl = "http://210.210.154.66:4444/storage/";
         String url = baseUrl+productList.get(position).getProductImage();
         Glide.with(context).load(url).into(holder.ivProduk);
+
+        holder.parentProduk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent deskripsiActivity = new Intent(context, DeskripsiProductActivity.class);
+                deskripsiActivity.putExtra("produk", productList.get(position));
+                context.startActivity(deskripsiActivity);
+            }
+        });
     }
 
     @Override
@@ -62,6 +73,7 @@ public class ListProductAdapter extends RecyclerView.Adapter<ListProductAdapter.
     public class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView ivProduk;
         public TextView tvNamaProduk, tvNamaMerchant;
+        public LinearLayout parentProduk;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -69,6 +81,7 @@ public class ListProductAdapter extends RecyclerView.Adapter<ListProductAdapter.
             tvNamaProduk = itemView.findViewById(R.id.tv_product_name);
             tvNamaMerchant = itemView.findViewById(R.id.tv_merchant_name);
             ivProduk = itemView.findViewById(R.id.iv_product);
+            parentProduk = itemView.findViewById(R.id.parent_product);
         }
     }
 }
