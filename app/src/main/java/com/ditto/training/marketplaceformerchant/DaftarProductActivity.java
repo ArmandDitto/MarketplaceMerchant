@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -16,6 +18,7 @@ import com.android.volley.toolbox.Volley;
 import com.ditto.training.marketplaceformerchant.adapter.ListProductAdapter;
 import com.ditto.training.marketplaceformerchant.model.ListProduct;
 import com.ditto.training.marketplaceformerchant.model.Product;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
 
 import org.json.JSONObject;
@@ -27,6 +30,8 @@ public class DaftarProductActivity extends AppCompatActivity {
     ListProductAdapter listProductAdapter;
     ArrayList<Product> data;
     RequestQueue requestQueue;
+    FloatingActionButton floatingActionButton;
+    Intent addProductIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +46,15 @@ public class DaftarProductActivity extends AppCompatActivity {
         rvProduct.setLayoutManager(new GridLayoutManager(this, 2));
 
         LoadVolley();
+
+        floatingActionButton = findViewById(R.id.fab_add);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addProductIntent = new Intent(getApplicationContext(), TambahProductActivity.class);
+                startActivity(addProductIntent);
+            }
+        });
     }
 
     private void LoadVolley() {

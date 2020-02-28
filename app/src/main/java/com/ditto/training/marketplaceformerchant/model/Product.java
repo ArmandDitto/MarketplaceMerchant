@@ -9,18 +9,46 @@ public class Product implements Parcelable {
     private String productSlug;
     private int productQty;
     private String productImage;
+    private int productPrice;
+    private String productDesc;
     private Merchant merchant;
     private Category category;
 
-    public Product(int productId, String productName, String productSlug, int productQty, String productImage, Merchant merchant, Category category) {
+    public Product(int productId, String productName, String productSlug, int productQty, String productImage, int productPrice, String productDesc, Merchant merchant, Category category) {
         this.productId = productId;
         this.productName = productName;
         this.productSlug = productSlug;
         this.productQty = productQty;
         this.productImage = productImage;
+        this.productPrice = productPrice;
+        this.productDesc = productDesc;
         this.merchant = merchant;
         this.category = category;
     }
+
+    protected Product(Parcel in) {
+        productId = in.readInt();
+        productName = in.readString();
+        productSlug = in.readString();
+        productQty = in.readInt();
+        productImage = in.readString();
+        productPrice = in.readInt();
+        productDesc = in.readString();
+        merchant = in.readParcelable(Merchant.class.getClassLoader());
+        category = in.readParcelable(Category.class.getClassLoader());
+    }
+
+    public static final Creator<Product> CREATOR = new Creator<Product>() {
+        @Override
+        public Product createFromParcel(Parcel in) {
+            return new Product(in);
+        }
+
+        @Override
+        public Product[] newArray(int size) {
+            return new Product[size];
+        }
+    };
 
     public int getProductId() {
         return productId;
@@ -42,6 +70,14 @@ public class Product implements Parcelable {
         return productImage;
     }
 
+    public int getProductPrice() {
+        return productPrice;
+    }
+
+    public String getProductDesc() {
+        return productDesc;
+    }
+
     public Merchant getMerchant() {
         return merchant;
     }
@@ -50,7 +86,6 @@ public class Product implements Parcelable {
         return category;
     }
 
-
     @Override
     public int describeContents() {
         return 0;
@@ -58,34 +93,14 @@ public class Product implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(this.productId);
-        dest.writeString(this.productName);
-        dest.writeString(this.productSlug);
-        dest.writeInt(this.productQty);
-        dest.writeString(this.productImage);
-        dest.writeParcelable(this.merchant, flags);
-        dest.writeParcelable(this.category, flags);
+        dest.writeInt(productId);
+        dest.writeString(productName);
+        dest.writeString(productSlug);
+        dest.writeInt(productQty);
+        dest.writeString(productImage);
+        dest.writeInt(productPrice);
+        dest.writeString(productDesc);
+        dest.writeParcelable(merchant, flags);
+        dest.writeParcelable(category, flags);
     }
-
-    protected Product(Parcel in) {
-        this.productId = in.readInt();
-        this.productName = in.readString();
-        this.productSlug = in.readString();
-        this.productQty = in.readInt();
-        this.productImage = in.readString();
-        this.merchant = in.readParcelable(Merchant.class.getClassLoader());
-        this.category = in.readParcelable(Category.class.getClassLoader());
-    }
-
-    public static final Parcelable.Creator<Product> CREATOR = new Parcelable.Creator<Product>() {
-        @Override
-        public Product createFromParcel(Parcel source) {
-            return new Product(source);
-        }
-
-        @Override
-        public Product[] newArray(int size) {
-            return new Product[size];
-        }
-    };
 }

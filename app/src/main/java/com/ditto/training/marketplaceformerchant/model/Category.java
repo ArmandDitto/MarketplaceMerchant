@@ -3,23 +3,27 @@ package com.ditto.training.marketplaceformerchant.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Category implements Parcelable {
-    private int categoryId;
+    @SerializedName("categoryId")
+    private long categoryId;
+
+    @SerializedName("categoryName")
     private String categoryName;
 
-    public Category(int categoryId, String categoryName) {
+    public Category(long categoryId, String categoryName) {
         this.categoryId = categoryId;
         this.categoryName = categoryName;
     }
 
-    public int getCategoryId() {
+    public long getCategoryId() {
         return categoryId;
     }
 
     public String getCategoryName() {
         return categoryName;
     }
-
 
     @Override
     public int describeContents() {
@@ -28,12 +32,12 @@ public class Category implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(this.categoryId);
+        dest.writeLong(this.categoryId);
         dest.writeString(this.categoryName);
     }
 
     protected Category(Parcel in) {
-        this.categoryId = in.readInt();
+        this.categoryId = in.readLong();
         this.categoryName = in.readString();
     }
 
