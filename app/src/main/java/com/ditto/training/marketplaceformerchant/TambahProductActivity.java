@@ -93,7 +93,6 @@ public class TambahProductActivity extends AppCompatActivity implements AdapterV
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        // handle response
                         try {
                             JSONArray data = response.getJSONArray("data");
                             for(int i=0;i<data.length();i++){
@@ -110,7 +109,6 @@ public class TambahProductActivity extends AppCompatActivity implements AdapterV
                         catch (JSONException e){
                             e.printStackTrace();
                         }
-
                     }
                 },
                 new Response.ErrorListener() {
@@ -119,8 +117,6 @@ public class TambahProductActivity extends AppCompatActivity implements AdapterV
                         error.printStackTrace();
                     }
                 });
-
-
         requestQueueku.add(listCatReq);
     }
 
