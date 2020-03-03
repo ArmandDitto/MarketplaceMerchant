@@ -30,7 +30,7 @@ import org.json.JSONObject;
 public class DeskripsiProductActivity extends AppCompatActivity {
     public TextView tvNamaDesc, tvMerchantDesc, tvJumlahDesc, tvMiniNameDesc, tvMiniCategoryDesc;
     public ImageView ivProduk;
-    public Button btnDeleteProduct;
+    public Button btnDeleteProduct, btnEditProduct;
     Product product = null;
 
     @Override
@@ -79,6 +79,14 @@ public class DeskripsiProductActivity extends AppCompatActivity {
                 alert.show();
             }
         });
+
+        btnEditProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent editProduct = new Intent(DeskripsiProductActivity.this, EditProductActivity.class);
+                startActivity(editProduct);
+            }
+        });
     }
 
     private void deleteProduct() {
@@ -109,6 +117,7 @@ public class DeskripsiProductActivity extends AppCompatActivity {
         tvMiniNameDesc = findViewById(R.id.tv_deskripsi_mini_nama_produk);
         tvMiniCategoryDesc = findViewById(R.id.tv_deskripsi_mini_kategori_produk);
         btnDeleteProduct = findViewById(R.id.button_delete_product);
+        btnEditProduct = findViewById(R.id.button_edit_product);
     }
 
 
