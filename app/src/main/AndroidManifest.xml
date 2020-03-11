@@ -14,6 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".model.LoginActivity"></activity>
         <activity android:name=".RegisterActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +25,7 @@
         <activity android:name=".EditProductActivity" />
         <activity android:name=".TambahProductActivity" />
         <activity android:name=".DeskripsiProductActivity" />
-        <activity android:name=".DaftarProductActivity"></activity>
+        <activity android:name=".DaftarProductActivity" />
     </application>
 
 </manifest>

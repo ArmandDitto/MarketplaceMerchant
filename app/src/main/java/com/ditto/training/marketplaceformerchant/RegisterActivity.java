@@ -21,6 +21,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.ditto.training.marketplaceformerchant.model.AccessToken;
+import com.ditto.training.marketplaceformerchant.model.LoginActivity;
 import com.ditto.training.marketplaceformerchant.model.RegisterErrorRespone;
 import com.google.gson.Gson;
 
@@ -63,8 +64,8 @@ public class RegisterActivity extends AppCompatActivity {
         tvLoginActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-/*                Intent loginIntent = new Intent(RegisterActivity.this, LoginActivity.class);
-                startActivity(loginIntent);*/
+                Intent loginIntent = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(loginIntent);
             }
         });
 
