@@ -1,4 +1,4 @@
-package com.ditto.training.marketplaceformerchant.model;
+package com.ditto.training.marketplaceformerchant;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,10 +15,8 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.ditto.training.marketplaceformerchant.R;
-import com.ditto.training.marketplaceformerchant.RegisterActivity;
-import com.ditto.training.marketplaceformerchant.TokenManager;
-import com.ditto.training.marketplaceformerchant.VolleyService;
+import com.ditto.training.marketplaceformerchant.model.AccessToken;
+import com.ditto.training.marketplaceformerchant.model.RegisterErrorRespone;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
@@ -85,15 +83,20 @@ public class LoginActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         accessToken = new Gson().fromJson(response, AccessToken.class);
                         TokenManager.getInstance(getSharedPreferences("pref", MODE_PRIVATE)).saveToken(accessToken);
-                        Toast.makeText(LoginActivity.this, response, Toast.LENGTH_SHORT).show();
+                        String at = TokenManager.getInstance(getSharedPreferences("pref",MODE_PRIVATE)).getToken().getAccessToken();
+                        Toast.makeText(LoginActivity.this, at, Toast.LENGTH_SHORT).show();
+                        Intent homeIntent = new Intent(LoginActivity.this, DaftarProductActivity.class);
+                        startActivity(homeIntent);
+                        finish();
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                String statusCode = String.valueOf(error.networkResponse.statusCode);
+                error.printStackTrace();
+                String statusCode ="";
                 String body = "";
-
                 try {
+                    statusCode =  String.valueOf(error.networkResponse.statusCode);
                     body = new String(error.networkResponse.data, "UTF-8");
                     JSONObject res = new JSONObject(body);
 
@@ -103,6 +106,7 @@ public class LoginActivity extends AppCompatActivity {
                         if(errorRespone.getEmailError().get(0)!=null){
                             etEmail.setError(errorRespone.getEmailError().get(0));
                             Toast.makeText(LoginActivity.this, "Gagal Login", Toast.LENGTH_SHORT).show();
+                            //finish();
                         }
                     }
                 } catch (JSONException e) {

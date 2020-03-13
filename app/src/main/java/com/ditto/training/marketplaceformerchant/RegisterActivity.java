@@ -21,7 +21,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.ditto.training.marketplaceformerchant.model.AccessToken;
-import com.ditto.training.marketplaceformerchant.model.LoginActivity;
 import com.ditto.training.marketplaceformerchant.model.RegisterErrorRespone;
 import com.google.gson.Gson;
 

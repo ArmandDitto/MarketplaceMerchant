@@ -4,11 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -16,6 +19,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.ditto.training.marketplaceformerchant.adapter.ListProductAdapter;
+import com.ditto.training.marketplaceformerchant.model.AccessToken;
 import com.ditto.training.marketplaceformerchant.model.ListProduct;
 import com.ditto.training.marketplaceformerchant.model.Product;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -23,7 +27,10 @@ import com.google.gson.Gson;
 
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.Map;
 
 public class DaftarProductActivity extends AppCompatActivity {
     RecyclerView rvProduct;
@@ -58,8 +65,7 @@ public class DaftarProductActivity extends AppCompatActivity {
     }
 
     private void LoadVolley() {
-        requestQueue = Volley.newRequestQueue(this);
-        String url = "http://210.210.154.65:4444/api/products/";
+        String url = "http://210.210.154.65:4444/api/merchant/products";
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
@@ -73,10 +79,24 @@ public class DaftarProductActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.e("Volley Error", error.getMessage());
+                        String bodyRes = "";
+                        try{
+                            bodyRes = new String(error.networkResponse.data,"UTF-8");
+                            System.out.println(bodyRes);
+                        } catch (UnsupportedEncodingException e) {
+                            e.printStackTrace();
+                        }
                     }
-                });
+                }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new Hashtable<>();
+                headers.put("Accept", "application/json");
+                headers.put("Authorization", TokenManager.getInstance(getSharedPreferences("pref",MODE_PRIVATE)).getToken().getTokenType() +" "+ TokenManager.getInstance(getSharedPreferences("pref",MODE_PRIVATE)).getToken().getAccessToken());
+                return headers;
+            }
+        };
 
-        requestQueue.add(request);
+        VolleyService.getInstance(getApplicationContext()).addToRequestQueue(request);
     }
 }

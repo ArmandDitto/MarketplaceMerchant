@@ -202,7 +202,7 @@ public class TambahProductActivity extends AppCompatActivity implements AdapterV
     }
 
     private void VolleyLoad(){
-        final StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://210.210.154.65:4444/api/products",
+        final StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://210.210.154.65:4444/api/merchant/products",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -245,7 +245,7 @@ public class TambahProductActivity extends AppCompatActivity implements AdapterV
             RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
             stringRequest.setRetryPolicy(policy);
             RequestQueue requestQueue = Volley.newRequestQueue(this);
-            requestQueue.add(stringRequest);
+            VolleyService.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
         }
     }
 }
