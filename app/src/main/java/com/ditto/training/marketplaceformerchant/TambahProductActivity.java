@@ -32,6 +32,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.ditto.training.marketplaceformerchant.R;
 import com.ditto.training.marketplaceformerchant.adapter.CategoriesAdapter;
+import com.ditto.training.marketplaceformerchant.model.AccessToken;
 import com.ditto.training.marketplaceformerchant.model.Category;
 import com.google.gson.Gson;
 
@@ -202,6 +203,8 @@ public class TambahProductActivity extends AppCompatActivity implements AdapterV
     }
 
     private void VolleyLoad(){
+        final AccessToken accessToken = TokenManager.getInstance(getSharedPreferences("pref", MODE_PRIVATE)).getToken();
+        final String accesTok = accessToken.getAccessToken();
         final StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://210.210.154.65:4444/api/merchant/products",
                 new Response.Listener<String>() {
                     @Override
@@ -236,8 +239,17 @@ public class TambahProductActivity extends AppCompatActivity implements AdapterV
                 data.put("productImage", productImage);
                 data.put("productDesc", productDesc);
                 data.put("categoryId", categoryId);
-                data.put("merchantId", merchantId);
+                //data.put("merchantId", merchantId);
                 return data;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new Hashtable<>();
+                headers.put("Accept", "application/json");
+                headers.put("Authorization", accessToken.getTokenType() +" "+ accesTok);
+                return headers;
+
             }
         };
         {
